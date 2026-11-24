@@ -90,10 +90,6 @@ export JAVA_HOME="C:/Program Files/Microsoft/jdk-17.0.21.102-hotspot"
 > 正式版已内置日志导出功能，不再单独提供 debug 测试版。
 > Windows 也可双击 `build.bat` 自动设置 JDK/SDK 路径后打包。
 
-### 签名
-签名配置从工程根目录 `keystore.properties` 读取，签名库为 `wozai-app.jks`。
-正式包签名证书 SHA-256：`8c2d6c73c12f23b16b9df215762f1c999fcead23da10f3930ed5196394878237`
-
 ---
 
 ## 配置
