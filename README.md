@@ -72,15 +72,14 @@ wozina/
 ## 构建
 
 ### 环境要求
-- **JDK 17**（本机示例：`C:/Program Files/Microsoft/jdk-17.0.21.102-hotspot`；默认 java 1.8 不可用）
+- **JDK 17**
 - Android SDK Platform 34 / Build Tools 34.0.0
 - Gradle Wrapper（工程已内置，无需单独安装 Gradle）
 
 ### 命令行打包（只出正式版）
 
 ```bash
-# 先设置 JDK 17，再打包
-export JAVA_HOME="C:/Program Files/Microsoft/jdk-17.0.21.102-hotspot"
+# 先把 JAVA_HOME 设为你的 JDK 17 安装目录，再打包
 ./gradlew assembleRelease --no-daemon
 ```
 
