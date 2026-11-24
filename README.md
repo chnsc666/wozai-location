@@ -84,11 +84,6 @@ export JAVA_HOME="C:/Program Files/Microsoft/jdk-17.0.21.102-hotspot"
 ./gradlew assembleRelease --no-daemon
 ```
 
-产物：`app/build/outputs/apk/release/app-release.apk`
-
-> 正式版已内置日志导出功能，不再单独提供 debug 测试版。
-> Windows 也可双击 `build.bat` 自动设置 JDK/SDK 路径后打包。
-
 ---
 
 ## 配置
