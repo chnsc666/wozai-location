@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 定位权限：精确 + 粗略 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 联网权限：调用高德逆地理编码接口 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 读取手机状态：用于区分双卡运营商/基站，并取当前上网卡的 subscriptionId 发短信 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 直接发送位置短信（点击分享即发，不再跳转短信 App 二次确认） -->
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <!-- 导出日志到「下载」目录：仅 Android 9 及以下需要；Android 10+ 走 MediaStore 无需此权限 -->
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+    <!-- Android 9 及以下后台定位（本 App 前台使用，一般用不到，保留以防扩展） -->
+    <uses-feature android:name="android.hardware.location.gps" android:required="false" />
+
+    <!--
+      安卓 11（API 30）起限制应用可见性。必须声明要访问的语音引擎服务，
+      否则 TextToSpeech 初始化会一直失败（系统设置里的“播放”不受此限制）。
+    -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+        <!-- 读取微信图标 + 跳转微信分享 -->
+        <package android:name="com.tencent.mm" />
+        <!-- 步行导航直接调起高德地图 App（Android 11+ 需声明包名才能启动） -->
+        <package android:name="com.autonavi.minimap" />
+        <!-- 读取系统默认短信 App 图标 -->
+        <intent>
+            <action android:name="android.intent.action.SENDTO" />
+            <data android:scheme="smsto" />
+        </intent>
+    </queries>
+
+    <application
+        android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_rules"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ElderLocation">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:paddingTop="26dp"
+    android:paddingBottom="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="导航到常用位置"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="#8C1D18"
+        android:gravity="center"
+        android:paddingBottom="8dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="点一下要去的地点，就会打开高德地图"
+        android:textSize="17sp"
+        android:textColor="#666666"
+        android:gravity="center"
+        android:paddingBottom="18dp" />
+
+    <LinearLayout
+        android:id="@+id/navPlacesContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+
+    <Button
+        android:id="@+id/btnCancelNav"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="取消"
+        android:textSize="21sp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/btn_gray"
+        android:layout_marginTop="14dp" />
+
+</LinearLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 勾选框（已选中）：34dp 蓝底白勾，和 App 主按钮同一个蓝，选中状态一眼可辨。 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="34dp"
+    android:height="34dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#1565C0"
+        android:pathData="M5.5,1.8 L18.5,1.8 Q22.2,1.8 22.2,5.5 L22.2,18.5 Q22.2,22.2 18.5,22.2 L5.5,22.2 Q1.8,22.2 1.8,18.5 L1.8,5.5 Q1.8,1.8 5.5,1.8 Z" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.6"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M6.3,12.1 L10.2,16 L17.7,8.3" />
+</vector>

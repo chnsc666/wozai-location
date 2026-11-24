@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    地图服务 Key：不再写在这里，也不编译进 APK。
+
+    请在 App 内长按标题「我」→「设置」→ 再长按「设置」标题，
+    填入高德 / 腾讯 Key 并保存，位置采集（逆地理编码、POI 搜索）会读取这里填的值。
+
+    - 高德 Web 服务 Key：https://console.amap.com/ → 应用管理 → 创建应用 → 添加 Key，服务平台选「Web服务」
+    - 腾讯位置服务 Key：https://lbs.qq.com/ → 控制台 → 添加 Key → 勾选 WebServiceAPI，校验方式留空
+    - 不填则该家不可用；两家都没填时只回退系统 Geocoder（部分机型可能查不到地址）
+-->
+<resources>
+    <string name="amap_web_key" translatable="false"></string>
+    <string name="tencent_web_key" translatable="false"></string>
+</resources>

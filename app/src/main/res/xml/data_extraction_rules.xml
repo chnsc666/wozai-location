@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  系统备份规则（Android 12+，dataExtractionRules）。
+  cloud-backup：云备份；device-transfer：换机直传。两处都要排除，格式与 backup_rules.xml 一致。
+-->
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="file" path="applog.txt" />
+        <exclude domain="sharedpref" path="app_keys.xml" />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="file" path="applog.txt" />
+        <exclude domain="sharedpref" path="app_keys.xml" />
+    </device-transfer>
+</data-extraction-rules>

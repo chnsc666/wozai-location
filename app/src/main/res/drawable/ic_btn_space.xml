@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 与按钮图标同宽(44dp)的透明占位，放在按钮文字右侧，
+     让「图标 + 文字」整体在按钮里精确居中。三枚按钮共用。 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="44dp"
+    android:height="44dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,0 L24,0 L24,24 L0,24 Z" />
+</vector>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:paddingTop="20dp"
+    android:paddingStart="24dp"
+    android:paddingEnd="24dp"
+    android:paddingBottom="8dp">
+
+    <!-- 两个分组标题：主文案加粗、括号里的说明保持常规字重，层次更清楚。
+         XML 里写全整句只是让预览一致，实际加粗在 showPlaceEditor 里用 StyleSpan 分段处理。 -->
+    <TextView
+        android:id="@+id/tvNameLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="名称（只在列表显示）"
+        android:textSize="20sp"
+        android:textColor="#37474F" />
+
+    <EditText
+        android:id="@+id/etPlaceName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="留空则使用地图名称"
+        android:textSize="22sp"
+        android:textColor="#212121"
+        android:textColorHint="#9E9E9E"
+        android:inputType="text"
+        android:layout_marginTop="4dp" />
+
+    <!-- 两种设坐标方式：先搜地址、再输经纬度，右侧各配一个蓝色小按钮。
+         地址放上面是因为老人更常用「搜地址」这条路，经纬度通常只有维护时才会手输。
+         按钮文字是「地址搜索」「坐标搜索」四个字，宽度固定 96dp 左右，剩下的宽度都给输入框。
+         上面这行说明「二选一」，免得老人把地址和经纬度两条都填一遍。 -->
+    <TextView
+        android:id="@+id/tvSearchLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="地址或坐标搜索（二选一）"
+        android:textSize="20sp"
+        android:textColor="#37474F"
+        android:layout_marginTop="16dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="6dp">
+
+        <EditText
+            android:id="@+id/etAddress"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:hint="地址"
+            android:textColorHint="#9E9E9E"
+            android:textSize="19sp"
+            android:textColor="#212121"
+            android:inputType="text"
+            android:importantForAutofill="no" />
+
+        <Button
+            android:id="@+id/btnFromAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:minWidth="96dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="地址搜索"
+            android:textSize="19sp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/btn_blue"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="8dp">
+
+        <EditText
+            android:id="@+id/etCoord"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:hint="纬度, 经度"
+            android:textColorHint="#9E9E9E"
+            android:textSize="19sp"
+            android:textColor="#212121"
+            android:inputType="text"
+            android:importantForAutofill="no" />
+
+        <Button
+            android:id="@+id/btnFromCoord"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:minWidth="96dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="坐标搜索"
+            android:textSize="19sp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/btn_blue"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvPoiPreview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="选择地点后会在这里显示，请确认后再保存"
+        android:textSize="18sp"
+        android:textColor="#2E7D32"
+        android:background="#E8F5E9"
+        android:padding="12dp"
+        android:layout_marginTop="10dp"
+        android:visibility="gone" />
+
+    <!-- 坐标是「结果」，放在两个输入框和地图名称下面看，不夹在名称与输入框之间 -->
+    <TextView
+        android:id="@+id/tvPlaceCoord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="坐标：未设置"
+        android:textSize="17sp"
+        android:textColor="#0D47A1"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:id="@+id/btnUseCurrent"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="用当前位置设定"
+        android:textSize="21sp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/btn_blue"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/btnClearPlace"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="清空这个位置"
+        android:textSize="19sp"
+        android:textColor="#B71C1C"
+        android:gravity="center"
+        android:paddingTop="14dp"
+        android:paddingBottom="10dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true" />
+
+</LinearLayout>

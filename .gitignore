@@ -1,0 +1,17 @@
+.gradle/
+.idea/
+local.properties
+build/
+app/build/
+*.iml
+.DS_Store
+captures/
+.externalNativeBuild/
+.cxx/
+# 签名密钥与密码配置（严禁提交到公开仓库）
+*.jks
+*.keystore
+keystore.properties
+
+# 构建产物 / 历史安装包（体积大，不纳入源码仓库，改用 GitHub Releases 发布）
+dist/

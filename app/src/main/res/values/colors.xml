@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 启动图标背景色，与 mipmap 图标红色底一致 -->
+    <color name="ic_launcher_background">#D32F2F</color>
+
+    <!-- 状态文字颜色：默认 / 实时定位成功 / 上次缓存位置 -->
+    <color name="status_normal">#37474F</color>
+    <color name="status_ok">#2E7D32</color>
+    <color name="status_cache">#E65100</color>
+</resources>

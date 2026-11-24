@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FDF6E3"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:paddingTop="6dp"
+    android:paddingBottom="20dp"
+    android:gravity="center_horizontal">
+
+    <!-- 顶部标题：30sp，主界面最大的一处字号；再大在系统字体放大时会折行 -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="我现在的位置"
+        android:textSize="30sp"
+        android:textColor="#B71C1C"
+        android:textStyle="bold"
+        android:layout_marginTop="2dp" />
+
+    <!-- 状态提示 -->
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="正在定位…请稍等几秒"
+        android:textSize="23sp"
+        android:textColor="#37474F"
+        android:layout_marginTop="8dp" />
+
+    <!-- 信息区可滚动，保证小屏手机也能看全 -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- 位置信息卡片：地址+定位时间、经纬度、运营商基站合成一张，
+                 段间用 1dp 浅灰细线隔开（线上下各留 18dp）。
+                 三段原本是三张卡片，各有 22dp 内边距 + 12dp 卡间距；
+                 合并后这些边距换成两条分隔线，省下约 35~40dp 高度。 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/card_bg"
+                android:padding="22dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="8dp">
+
+                <!-- 详细地址：高度随内容自动增高，长地址换行也不会被挤压错位 -->
+                <TextView
+                    android:id="@+id/tvAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="获取中…"
+                    android:textSize="28sp"
+                    android:textColor="#212121"
+                    android:textStyle="bold"
+                    android:lineSpacingExtra="6dp"
+                    android:includeFontPadding="true"
+                    android:breakStrategy="simple"
+                    android:hyphenationFrequency="none" />
+
+                <!-- 最后定位时间：说明这份位置是什么时候定位的。
+                     字号 20sp、深灰 #424242，时间数字在代码里加粗（前缀保持常规字重），
+                     靠字重而不是靠加深颜色把时间提出来，不会和上面的地址抢注意力。 -->
+                <TextView
+                    android:id="@+id/tvFixTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="3dp"
+                    android:layout_marginTop="10dp" />
+
+                <!-- 分隔线：地址段 / 坐标段 -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#CFD8DC"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="18dp" />
+
+                <!-- 经纬度 -->
+                <TextView
+                    android:id="@+id/tvLat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="纬度: --"
+                    android:textSize="28sp"
+                    android:textColor="#0D47A1"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvLng"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="经度: --"
+                    android:textSize="28sp"
+                    android:textColor="#0D47A1"
+                    android:textStyle="bold"
+                    android:layout_marginTop="6dp" />
+
+                <!-- 分隔线：坐标段 / 运营商段 -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#CFD8DC"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="18dp" />
+
+                <!-- 运营商与基站：GPS 信号弱时的辅助信息 -->
+                <TextView
+                    android:id="@+id/tvCell"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="读取中…"
+                    android:textSize="20sp"
+                    android:textColor="#212121"
+                    android:textStyle="bold"
+                    android:lineSpacingExtra="8dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 语音播放详细地址：点击朗读地址文字（系统 TTS），再点一次停止。
+         用 LinearLayout 承载「图标 + 文字」，gravity=center 让两者作为一个整体居中；
+         系统 Button 的左侧图标是贴边绘制的，不会跟文字一起居中，所以不能用它。 -->
+    <LinearLayout
+        android:id="@+id/btnSpeak"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:baselineAligned="false"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/btn_orange"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp">
+
+        <ImageView
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:src="@drawable/ic_speaker"
+            android:contentDescription="@null"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/tvSpeak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="播放位置"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+    <!-- 一键分享到微信：点击自动复制位置并跳转微信 -->
+    <LinearLayout
+        android:id="@+id/btnWechat"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:baselineAligned="false"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/btn_wechat"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="8dp">
+
+        <ImageView
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:src="@drawable/ic_share"
+            android:contentDescription="@null"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="分享位置"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+    <!-- 一键刷新按钮 -->
+    <LinearLayout
+        android:id="@+id/btnRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:baselineAligned="false"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/btn_blue"
+        android:layout_marginBottom="8dp">
+
+        <ImageView
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:src="@drawable/ic_relocate"
+            android:contentDescription="@null"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="重新定位"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+</LinearLayout>

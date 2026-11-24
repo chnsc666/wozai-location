@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  系统备份规则（Android 11 及以下，fullBackupContent）。
+
+  allowBackup 保持 true：换手机时「短信默认号码、姓名、定位参数」能跟着迁移，老人不用重配。
+  但以下两项排除掉，不上云、不随换机迁移：
+  - applog.txt：运行日志，含定位/网络过程，没有迁移价值；
+  - app_keys.xml：地图 Key（高德/腾讯），属于凭据，不应离开本机。
+
+  Android 12+ 走 data_extraction_rules.xml，两份规则要保持一致。
+-->
+<full-backup-content>
+    <exclude domain="file" path="applog.txt" />
+    <exclude domain="sharedpref" path="app_keys.xml" />
+</full-backup-content>
