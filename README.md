@@ -63,7 +63,6 @@ wozina/
 ├── build.gradle.kts                # 顶层构建脚本
 ├── settings.gradle.kts             # 仓库与依赖源配置
 ├── gradle.properties               # Gradle 参数
-├── keystore.properties             # 签名配置（密码不写进构建文件）
 ├── build.bat                       # Windows 一键打包脚本
 └── gradlew / gradlew.bat           # Gradle Wrapper
 ```
